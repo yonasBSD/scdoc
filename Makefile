@@ -1,12 +1,12 @@
 VERSION=1.11.1
-CFLAGS+=-g -DVERSION='"$(VERSION)"' -Wall -Wextra -Werror -Wno-unused-parameter
+CFLAGS?=-g
+MAINFLAGS:=-DVERSION='"$(VERSION)"' -Wall -Wextra -Werror -Wno-unused-parameter
 LDFLAGS+=-static
 INCLUDE+=-Iinclude
 PREFIX?=/usr/local
-_INSTDIR=$(DESTDIR)$(PREFIX)
-BINDIR?=$(_INSTDIR)/bin
-MANDIR?=$(_INSTDIR)/share/man
-PCDIR?=$(_INSTDIR)/lib/pkgconfig
+BINDIR?=$(PREFIX)/bin
+MANDIR?=$(PREFIX)/share/man
+PCDIR?=$(PREFIX)/share/pkgconfig
 OUTDIR=.build
 HOST_SCDOC=./scdoc
 .DEFAULT_GOAL=all
@@ -24,7 +24,7 @@ OBJECTS=\
 
 $(OUTDIR)/%.o: src/%.c
 	@mkdir -p $(OUTDIR)
-	$(CC) -std=c99 -pedantic -c -o $@ $(CFLAGS) $(INCLUDE) $<
+	$(CC) -std=c99 -pedantic -c -o $@ $(CFLAGS) $(MAINFLAGS) $(INCLUDE) $<
 
 scdoc: $(OBJECTS)
 	$(CC) $(LDFLAGS) -o $@ $^
@@ -44,11 +44,11 @@ clean:
 	rm -rf $(OUTDIR) scdoc scdoc.1 scdoc.5 scdoc.pc
 
 install: all
-	mkdir -p $(BINDIR) $(MANDIR)/man1 $(MANDIR)/man5 $(PCDIR)
-	install -m755 scdoc $(BINDIR)/scdoc
-	install -m644 scdoc.1 $(MANDIR)/man1/scdoc.1
-	install -m644 scdoc.5 $(MANDIR)/man5/scdoc.5
-	install -m644 scdoc.pc $(PCDIR)/scdoc.pc
+	mkdir -p $(DESTDIR)/$(BINDIR) $(DESTDIR)/$(MANDIR)/man1 $(DESTDIR)/$(MANDIR)/man5 $(DESTDIR)/$(PCDIR)
+	install -m755 scdoc $(DESTDIR)/$(BINDIR)/scdoc
+	install -m644 scdoc.1 $(DESTDIR)/$(MANDIR)/man1/scdoc.1
+	install -m644 scdoc.5 $(DESTDIR)/$(MANDIR)/man5/scdoc.5
+	install -m644 scdoc.pc $(DESTDIR)/$(PCDIR)/scdoc.pc
 
 check: scdoc scdoc.1 scdoc.5
 	@find test -perm -111 -exec '{}' \;
