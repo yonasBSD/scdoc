@@ -248,6 +248,13 @@ static void parse_text(struct parser *p) {
 				break;
 			}
 			/* fallthrough */
+		case '\'':
+			if (!i) {
+				// Escape ' if it's the first character
+				fprintf(p->output, "\\&'\\&");
+				break;
+			}
+			/* fallthrough */
 		case '!':
 		case '?':
 			last = ch;
@@ -424,6 +431,9 @@ static void parse_literal(struct parser *p, int *indent) {
 			switch (ch) {
 			case '.':
 				fprintf(p->output, "\\&.");
+				break;
+			case '\'':
+				fprintf(p->output, "\\&'");
 				break;
 			case '\\':
 				ch = parser_getch(p);
