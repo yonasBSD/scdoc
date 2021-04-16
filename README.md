@@ -12,6 +12,10 @@ You can pass PREFIX or DESTDIR to make if you'd like:
     make PREFIX=/usr
     sudo make PREFIX=/usr install
 
+Uninstallation is similar:
+
+    sudo make uninstall
+
 ## Usage
 
 See scdoc(1)

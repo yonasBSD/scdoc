@@ -50,7 +50,13 @@ install: all
 	install -m644 scdoc.5 $(DESTDIR)/$(MANDIR)/man5/scdoc.5
 	install -m644 scdoc.pc $(DESTDIR)/$(PCDIR)/scdoc.pc
 
+uninstall:
+	rm -f $(DESTDIR)/$(BINDIR)/scdoc
+	rm -f $(DESTDIR)/$(MANDIR)/man1/scdoc.1
+	rm -f $(DESTDIR)/$(MANDIR)/man5/scdoc.5
+	rm -f $(DESTDIR)/$(PCDIR)/scdoc.pc
+
 check: scdoc scdoc.1 scdoc.5
 	@find test -perm -111 -exec '{}' \;
 
-.PHONY: all clean install check
+.PHONY: all clean install uninstall check
