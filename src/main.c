@@ -493,12 +493,12 @@ static void parse_table(struct parser *p, uint32_t style) {
 			goto commit_table;
 		case '|':
 			prevrow = currow;
-			currow = calloc(1, sizeof(struct table_row));
+			currow = xcalloc(1, sizeof(struct table_row));
 			if (prevrow) {
 				// TODO: Verify the number of columns match
 				prevrow->next = currow;
 			}
-			curcell = calloc(1, sizeof(struct table_cell));
+			curcell = xcalloc(1, sizeof(struct table_cell));
 			currow->cell = curcell;
 			column = 0;
 			if (!table) {
@@ -511,7 +511,7 @@ static void parse_table(struct parser *p, uint32_t style) {
 						"starting a row first");
 			} else {
 				struct table_cell *prev = curcell;
-				curcell = calloc(1, sizeof(struct table_cell));
+				curcell = xcalloc(1, sizeof(struct table_cell));
 				if (prev) {
 					prev->next = curcell;
 				}

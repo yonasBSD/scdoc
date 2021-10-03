@@ -25,5 +25,7 @@ uint32_t parser_getch(struct parser *parser);
 void parser_pushch(struct parser *parser, uint32_t ch);
 void parser_pushstr(struct parser *parser, const char *str);
 int roff_macro(struct parser *p, char *cmd, ...);
+void *xcalloc(size_t n, size_t s);
+void *xrealloc(void *p, size_t s);
 
 #endif

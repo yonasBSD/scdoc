@@ -69,3 +69,21 @@ int roff_macro(struct parser *p, char *cmd, ...) {
 	fputc('\n', f);
 	return l + 1;
 }
+
+void *xcalloc(size_t n, size_t s) {
+	void *p = calloc(n, s);
+	if (!p) {
+		fputs("Out of memory\n", stderr);
+		abort();
+	}
+	return p;
+}
+
+void *xrealloc(void *p, size_t s) {
+	void *ret = realloc(p, s);
+	if (!ret) {
+		fputs("Out of memory\n", stderr);
+		abort();
+	}
+	return ret;
+}

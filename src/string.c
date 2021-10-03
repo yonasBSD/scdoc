@@ -2,22 +2,19 @@
 #include <stdint.h>
 #include "str.h"
 #include "unicode.h"
+#include "util.h"
 
-static int ensure_capacity(struct str *str, size_t len) {
+static void ensure_capacity(struct str *str, size_t len) {
 	if (len + 1 >= str->size) {
-		char *new = realloc(str->str, str->size * 2);
-		if (!new) {
-			return 0;
-		}
+		char *new = xrealloc(str->str, str->size * 2);
 		str->str = new;
 		str->size *= 2;
 	}
-	return 1;
 }
 
 struct str *str_create() {
-	struct str *str = calloc(1, sizeof(struct str));
-	str->str = malloc(16);
+	struct str *str = xcalloc(1, sizeof(struct str));
+	str->str = xcalloc(16, 1);
 	str->size = 16;
 	str->len = 0;
 	str->str[0] = '\0';
@@ -35,9 +32,7 @@ int str_append_ch(struct str *str, uint32_t ch) {
 	if (size <= 0) {
 		return -1;
 	}
-	if (!ensure_capacity(str, str->len + size)) {
-		return -1;
-	}
+	ensure_capacity(str, str->len + size);
 	utf8_encode(&str->str[str->len], ch);
 	str->len += size;
 	str->str[str->len] = '\0';
