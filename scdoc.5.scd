@@ -122,7 +122,8 @@ respectively (or space to continue the previous cell on multiple lines),
 followed by [ or - or ] to align the contents to the left, center, or right,
 followed by a space and the contents of that cell. You may use a space instead
 of an alignment specifier to inherit the alignment of the same column in the
-previous row.
+previous row. Each row must have the same number of columns; empty columns are
+permitted.
 
 The first character of the first row is not limited to | and has special
 meaning. [ will produce a table with borders around each cell. | will produce a

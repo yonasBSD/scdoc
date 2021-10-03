@@ -481,6 +481,7 @@ static void parse_table(struct parser *p, uint32_t style) {
 	struct table_row *currow = NULL, *prevrow = NULL;
 	struct table_cell *curcell = NULL;
 	int column = 0;
+	int numcolumns = -1;
 	uint32_t ch;
 	parser_pushch(p, '|');
 
@@ -495,12 +496,16 @@ static void parse_table(struct parser *p, uint32_t style) {
 			prevrow = currow;
 			currow = xcalloc(1, sizeof(struct table_row));
 			if (prevrow) {
-				// TODO: Verify the number of columns match
+				if (column != numcolumns && numcolumns != -1) {
+					parser_fatal(p, "Each row must have the "
+							"same number of columns");
+				}
+				numcolumns = column;
+				column = 0;
 				prevrow->next = currow;
 			}
 			curcell = xcalloc(1, sizeof(struct table_cell));
 			currow->cell = curcell;
-			column = 0;
 			if (!table) {
 				table = currow;
 			}

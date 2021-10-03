@@ -10,3 +10,18 @@ bug-example(1)
 :-
 EOF
 end 0
+
+begin "Disallows differing row lengths"
+scdoc <<EOF >/dev/null
+bug-example(1)
+
+[-
+:-
+:-
+|-
+:-
+|-
+:-
+:-
+EOF
+end 1
