@@ -1,4 +1,4 @@
-VERSION=1.11.1
+VERSION=1.11.2
 CFLAGS?=-g
 MAINFLAGS:=-DVERSION='"$(VERSION)"' -Wall -Wextra -Werror -Wno-unused-parameter
 LDFLAGS+=-static
