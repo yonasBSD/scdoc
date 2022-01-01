@@ -8,7 +8,7 @@ scdoc - document format for writing manual pages
 
 Input files must use the UTF-8 encoding.
 
-## PREAMBLE
+## Preamble
 
 Each scdoc file must begin with the following preamble:
 
@@ -21,7 +21,7 @@ _left\_footer_ and _center\_header_ are optional arguments which set the text
 positioned at those locations in the generated man page, and *must* be
 surrounded with double quotes.
 
-## SECTION HEADERS
+## Section headers
 
 Each section of your man page should begin with something similar to the
 following:
@@ -31,23 +31,23 @@ following:
 Subsection headers are also understood - use two hashes. Each header must have
 an empty line on either side.
 
-## PARAGRAPHS
+## Paragraphs
 
 Begin a new paragraph with an empty line.
 
-## LINE BREAKS
+## Line breaks
 
 Insert a line break by ending a line with \+\+.
 
 The result looks++
 like this.
 
-## FORMATTING
+## Formatting
 
 Text can be made *bold* or _underlined_ with asterisks and underscores: \*bold\*
 or \_underlined\_. Underscores in the_middle_of_words will be disregarded.
 
-## INDENTATION
+## Indentation
 
 You may indent lines with tab characters (*\\t*) to indent them by 4 spaces in
 the output. Indented lines may not contain headers.
@@ -59,7 +59,7 @@ the output. Indented lines may not contain headers.
 Deindent to return to normal, or indent again to increase your indentation
 depth.
 
-## LISTS
+## Lists
 
 You may start bulleted lists with dashes (-), like so:
 
@@ -96,7 +96,7 @@ level, plus two spaces. They will be rendered as a single list entry.
 	- But its children can go on
 	  for a while
 
-## NUMBERED LISTS
+## Numbered lists
 
 Numbered lists are similar to normal lists, but begin with periods (.) instead
 of dashes (-), like so:
@@ -113,7 +113,7 @@ of dashes (-), like so:
 . Item 3,
   with multiple lines
 
-## TABLES
+## Tables
 
 To begin a table, add an empty line followed by any number of rows.
 
@@ -171,7 +171,7 @@ align), = (center align), and > (right align), like so:
 |  *Foo*
 :  Bar
 
-## LITERAL TEXT
+## Literal text
 
 You may turn off scdoc formatting and output literal text with escape codes and
 literal blocks. Inserting a \\ into your source will cause the subsequent symbol
@@ -190,7 +190,7 @@ roff macros into the output. Note that \\ is still interpreted within literal
 blocks, which for example can be useful to output \``` inside of a literal
 block.
 
-## COMMENTS
+## Comments
 
 Lines beginning with ; and a space are ignored.
 
