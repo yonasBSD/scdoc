@@ -736,7 +736,7 @@ static void parse_document(struct parser *p) {
 						p->fmt_line, p->fmt_col);
 				parser_fatal(p, error);
 			}
-			roff_macro(p, "P", NULL);
+			roff_macro(p, "PP", NULL);
 			break;
 		default:
 			parser_pushch(p, ch);
