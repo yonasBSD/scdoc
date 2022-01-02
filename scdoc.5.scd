@@ -1,4 +1,4 @@
-scdoc(5)
+SCDOC(5)
 
 # NAME
 
@@ -12,10 +12,10 @@ Input files must use the UTF-8 encoding.
 
 Each scdoc file must begin with the following preamble:
 
-	_name_(_section_) ["left\_footer" ["center\_header"]]
+	_NAME_(_section_) ["left\_footer" ["center\_header"]]
 
-_name_ is the name of the man page you are writing, and _section_ is the section
-you're writing for (see *man*(1) for information on manual sections).
+_NAME_ is the name of the man page you are writing, and _section_ is the section
+you're writing for (see _man_(1) for information on manual sections).
 
 _left\_footer_ and _center\_header_ are optional arguments which set the text
 positioned at those locations in the generated man page, and *must* be
@@ -204,7 +204,7 @@ By convention, all scdoc documents should be hard wrapped at 80 columns.
 
 # SEE ALSO
 
-*scdoc*(1)
+_scdoc_(1)
 
 # AUTHORS
 

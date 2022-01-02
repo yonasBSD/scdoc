@@ -1,8 +1,8 @@
-scdoc(1)
+SCDOC(1)
 
 # NAME
 
-scdoc - generate *man*(7) manual pages
+scdoc - generate _man_(7) manual pages
 
 # SYNOPSIS
 
@@ -10,12 +10,12 @@ scdoc - generate *man*(7) manual pages
 
 # DESCRIPTION
 
-The scdoc utility reads *scdoc*(5) syntax from the standard input and writes
-*man*(7) style roff to the standard output.
+The scdoc utility reads _scdoc_(5) syntax from the standard input and writes
+_man_(7) style roff to the standard output.
 
 # SEE ALSO
 
-*scdoc*(5)
+_scdoc_(5)
 
 # AUTHORS
 
