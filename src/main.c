@@ -329,24 +329,12 @@ static int parse_indent(struct parser *p, int *indent, bool write) {
 }
 
 static void list_header(struct parser *p, int *num) {
-	fprintf(p->output, ".RS 4\n");
-	fprintf(p->output, ".ie n \\{\\\n");
-	if (*num == -1) {
-		fprintf(p->output, "\\h'-0%d'%s\\h'+03'\\c\n",
-				*num >= 10 ? 5 : 4, "\\(bu");
-	} else {
-		fprintf(p->output, "\\h'-0%d'%d.\\h'+03'\\c\n",
-				*num >= 10 ? 5 : 4, *num);
-	}
-	fprintf(p->output, ".\\}\n");
-	fprintf(p->output, ".el \\{\\\n");
 	if (*num == -1) {
 		fprintf(p->output, ".IP %s 4\n", "\\(bu");
 	} else {
 		fprintf(p->output, ".IP %d. 4\n", *num);
 		*num = *num + 1;
 	}
-	fprintf(p->output, ".\\}\n");
 }
 
 static void parse_list(struct parser *p, int *indent, int num) {
@@ -354,6 +342,7 @@ static void parse_list(struct parser *p, int *indent, int num) {
 	if ((ch = parser_getch(p)) != ' ') {
 		parser_fatal(p, "Expected space before start of list entry");
 	}
+	fprintf(p->output, ".PD 0\n");
 	list_header(p, &num);
 	parse_text(p);
 	do {
@@ -373,18 +362,15 @@ static void parse_list(struct parser *p, int *indent, int num) {
 			if ((ch = parser_getch(p)) != ' ') {
 				parser_fatal(p, "Expected space before start of list entry");
 			}
-			roff_macro(p, "RE", NULL);
 			list_header(p, &num);
 			parse_text(p);
 			break;
 		default:
-			fprintf(p->output, "\n");
+			roff_macro(p, "PD", NULL);
 			parser_pushch(p, ch);
-			goto ret;
+			return;
 		}
 	} while (ch != UTF8_INVALID);
-ret:
-	roff_macro(p, "RE", NULL);
 }
 
 static void parse_literal(struct parser *p, int *indent) {
