@@ -7,7 +7,7 @@ struct str {
 	size_t len, size;
 };
 
-struct str *str_create();
+struct str *str_create(void);
 void str_free(struct str *str);
 void str_reset(struct str *str);
 int str_append_ch(struct str *str, uint32_t ch);

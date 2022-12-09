@@ -12,7 +12,7 @@ static void ensure_capacity(struct str *str, size_t len) {
 	}
 }
 
-struct str *str_create() {
+struct str *str_create(void) {
 	struct str *str = xcalloc(1, sizeof(struct str));
 	str->str = xcalloc(16, 1);
 	str->size = 16;
