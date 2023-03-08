@@ -13,9 +13,6 @@
 #include "unicode.h"
 #include "util.h"
 
-char *strstr(const char *haystack, const char *needle);
-char *strerror(int errnum);
-
 static struct str *parse_section(struct parser *p) {
 	struct str *section = str_create();
 	uint32_t ch;
