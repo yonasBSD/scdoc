@@ -1,5 +1,4 @@
 #include <stdint.h>
-#include <stddef.h>
 #include "unicode.h"
 
 uint8_t masks[] = {
