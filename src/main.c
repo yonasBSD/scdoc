@@ -208,7 +208,7 @@ static void parse_text(struct parser *p) {
 			if (ch == UTF8_INVALID) {
 				parser_fatal(p, "Unexpected EOF");
 			} else if (ch == '\\') {
-				fprintf(p->output, "\\\\");
+				fprintf(p->output, "\\e");
 			} else {
 				utf8_fputch(p->output, ch);
 			}
