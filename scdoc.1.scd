@@ -13,6 +13,13 @@ scdoc - generate _man_(7) manual pages
 The scdoc utility reads _scdoc_(5) syntax from the standard input and writes
 _man_(7) style roff to the standard output.
 
+# ENVIRONMENT
+
+The scdoc utility supports the standard _SOURCE_DATE_EPOCH_ environment
+variable for reproducible builds. This variables specifies the date in number
+of seconds since the Unix epoch, see:
+https://reproducible-builds.org/specs/source-date-epoch/
+
 # SEE ALSO
 
 _scdoc_(5)
