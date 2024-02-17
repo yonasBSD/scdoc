@@ -4,6 +4,11 @@ scdoc is a simple man page generator for POSIX systems written in C99.
 
 ## Installation
 
+scdoc is likely available from your local system distribution -- your package
+manager is the preferred means of installation.
+
+To install from source:
+
     make
     sudo make install
 
