@@ -44,17 +44,17 @@ clean:
 	rm -rf $(OUTDIR) scdoc scdoc.1 scdoc.5 scdoc.pc
 
 install: all
-	mkdir -p $(DESTDIR)/$(BINDIR) $(DESTDIR)/$(MANDIR)/man1 $(DESTDIR)/$(MANDIR)/man5 $(DESTDIR)/$(PCDIR)
-	install -m755 scdoc $(DESTDIR)/$(BINDIR)/scdoc
-	install -m644 scdoc.1 $(DESTDIR)/$(MANDIR)/man1/scdoc.1
-	install -m644 scdoc.5 $(DESTDIR)/$(MANDIR)/man5/scdoc.5
-	install -m644 scdoc.pc $(DESTDIR)/$(PCDIR)/scdoc.pc
+	mkdir -p $(DESTDIR)$(BINDIR) $(DESTDIR)$(MANDIR)/man1 $(DESTDIR)$(MANDIR)/man5 $(DESTDIR)$(PCDIR)
+	install -m755 scdoc $(DESTDIR)$(BINDIR)/scdoc
+	install -m644 scdoc.1 $(DESTDIR)$(MANDIR)/man1/scdoc.1
+	install -m644 scdoc.5 $(DESTDIR)$(MANDIR)/man5/scdoc.5
+	install -m644 scdoc.pc $(DESTDIR)$(PCDIR)/scdoc.pc
 
 uninstall:
-	rm -f $(DESTDIR)/$(BINDIR)/scdoc
-	rm -f $(DESTDIR)/$(MANDIR)/man1/scdoc.1
-	rm -f $(DESTDIR)/$(MANDIR)/man5/scdoc.5
-	rm -f $(DESTDIR)/$(PCDIR)/scdoc.pc
+	rm -f $(DESTDIR)$(BINDIR)/scdoc
+	rm -f $(DESTDIR)$(MANDIR)/man1/scdoc.1
+	rm -f $(DESTDIR)$(MANDIR)/man5/scdoc.5
+	rm -f $(DESTDIR)$(PCDIR)/scdoc.pc
 
 check: scdoc scdoc.1 scdoc.5
 	@find test -perm -111 -exec '{}' \;
