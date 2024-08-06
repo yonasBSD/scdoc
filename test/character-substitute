@@ -1,0 +1,18 @@
+#!/bin/sh
+. test/lib.sh
+
+begin "Substitute ~ with \(ti"
+scdoc <<EOF | grep '\\fIhello\\(ti\\fR' >/dev/null
+test(8)
+
+_hello~_
+EOF
+end 0
+
+begin "Substitute ^ with \(ha"
+scdoc <<EOF | grep '\\fIhello\\(ha\\fR' >/dev/null
+test(8)
+
+_hello^_
+EOF
+end 0

@@ -261,6 +261,14 @@ static void parse_text(struct parser *p) {
 			// Suppress sentence spacing
 			fprintf(p->output, "\\&");
 			break;
+		case '~':
+			// Escape ~ to not render it with U+02DC
+			fprintf(p->output, "\\(ti");
+			break;
+		case '^':
+			// Escape ^ to not render it with U+02C6
+			fprintf(p->output, "\\(ha");
+			break;
 		default:
 			last = ch;
 			utf8_fputch(p->output, ch);
