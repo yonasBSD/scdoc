@@ -1,7 +1,6 @@
 VERSION=1.11.3
 CFLAGS?=-g
 MAINFLAGS:=-DVERSION='"$(VERSION)"' -Wall -Wextra -Werror -Wno-unused-parameter
-LDFLAGS+=-static
 INCLUDE+=-Iinclude
 PREFIX?=/usr/local
 BINDIR?=$(PREFIX)/bin
