@@ -96,10 +96,10 @@ static void parse_preamble(struct parser *p) {
 					endptr);
 			exit(EXIT_FAILURE);
 		}
-		if (epoch > ULONG_MAX) {
+		if (epoch > ULLONG_MAX) {
 			fprintf(stderr, "$SOURCE_DATE_EPOCH: value must be smaller than or "
-					"equal to %lu but was found to be: %llu \n",
-					ULONG_MAX, epoch);
+					"equal to %llu but was found to be: %llu \n",
+					ULLONG_MAX, epoch);
 			exit(EXIT_FAILURE);
 		}
 		date_time = epoch;
